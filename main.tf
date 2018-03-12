@@ -5,9 +5,7 @@ resource "aws_security_group" "nomad_spark" {
   description = "Security Group for ${var.name} Nomad Spark"
   vpc_id      = "${var.vpc_id}"
 
-  tags {
-    Name = "${var.name}"
-  }
+  tags = "${merge(var.tags, map("Name", format("%s", var.name)))}"
 }
 
 # HDFS NameNode UI

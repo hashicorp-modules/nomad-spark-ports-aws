@@ -6,8 +6,8 @@ resource "aws_vpc" "main" {
 }
 
 module "nomad_spark_ports_aws" {
+  # source = "github.com/hashicorp-modules/nomad-spark-ports-aws?ref=f-refactor"
   source = "../../../nomad-spark-ports-aws"
-  # source = "git@github.com:hashicorp-modules/nomad-spark-ports-aws?ref=f-refactor"
 
   name        = "${var.name}"
   vpc_id      = "${aws_vpc.main.id}"

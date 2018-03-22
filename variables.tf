@@ -1,6 +1,6 @@
-variable "provision" {
-  default     = "true"
-  description = "Override to prevent provisioning resources in this module, defaults to \"true\"."
+variable "create" {
+  description = "Create Module, defaults to true."
+  default     = true
 }
 
 variable "name" {
@@ -18,7 +18,7 @@ variable "cidr_blocks" {
 }
 
 variable "tags" {
+  description = "Optional map of tags to set on resources, defaults to empty map."
   type        = "map"
   default     = {}
-  description = "Optional map of tags to set on resources, defaults to empty map."
 }

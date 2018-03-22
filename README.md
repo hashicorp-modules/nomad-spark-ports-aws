@@ -10,6 +10,7 @@ Creates a standard Nomad Spark security group in AWS.
 
 ## Input Variables
 
+- `create`: [Optional] Create Module, defaults to true.
 - `name`: [Optional] Name for resources, defaults to "nomad-spark-ports-aws".
 - `vpc_id`: [Required] VPC ID to provision resources in.
 - `cidr_blocks`: [Required] CIDR blocks for Security Groups.

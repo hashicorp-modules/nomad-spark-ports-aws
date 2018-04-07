@@ -2,6 +2,10 @@ terraform {
   required_version = ">= 0.9.3"
 }
 
+provider "aws" {
+  version = "~> 1.12"
+}
+
 resource "aws_security_group" "nomad_spark" {
   count = "${var.create ? 1 : 0}"
 
@@ -16,7 +20,7 @@ resource "aws_security_group" "nomad_spark" {
 resource "aws_security_group_rule" "hdfs_namenode_ui" {
   count = "${var.create ? 1 : 0}"
 
-  security_group_id = "${element(aws_security_group.nomad_spark.*.id, 0)}"
+  security_group_id = "${aws_security_group.nomad_spark.id}"
   type              = "ingress"
   protocol          = "tcp"
   from_port         = 50070
@@ -28,7 +32,7 @@ resource "aws_security_group_rule" "hdfs_namenode_ui" {
 resource "aws_security_group_rule" "hdfs_datanode_ui" {
   count = "${var.create ? 1 : 0}"
 
-  security_group_id = "${element(aws_security_group.nomad_spark.*.id, 0)}"
+  security_group_id = "${aws_security_group.nomad_spark.id}"
   type              = "ingress"
   protocol          = "tcp"
   from_port         = 50075
@@ -40,7 +44,7 @@ resource "aws_security_group_rule" "hdfs_datanode_ui" {
 resource "aws_security_group_rule" "history_server_ui" {
   count = "${var.create ? 1 : 0}"
 
-  security_group_id = "${element(aws_security_group.nomad_spark.*.id, 0)}"
+  security_group_id = "${aws_security_group.nomad_spark.id}"
   type              = "ingress"
   protocol          = "tcp"
   from_port         = 18080
@@ -52,7 +56,7 @@ resource "aws_security_group_rule" "history_server_ui" {
 resource "aws_security_group_rule" "outbound_tcp" {
   count = "${var.create ? 1 : 0}"
 
-  security_group_id = "${element(aws_security_group.nomad_spark.*.id, 0)}"
+  security_group_id = "${aws_security_group.nomad_spark.id}"
   type              = "ingress"
   protocol          = "-1"
   from_port         = 0

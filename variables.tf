@@ -4,8 +4,8 @@ variable "create" {
 }
 
 variable "name" {
-  default     = "nomad-spark-ports-aws"
   description = "Name for resources, defaults to \"nomad-spark-ports-aws\"."
+  default     = "nomad-spark-ports-aws"
 }
 
 variable "vpc_id" {
@@ -13,8 +13,8 @@ variable "vpc_id" {
 }
 
 variable "cidr_blocks" {
-  type        = "list"
   description = "CIDR blocks for Security Groups."
+  type        = "list"
 }
 
 variable "tags" {

@@ -6,7 +6,7 @@ resource "aws_vpc" "main" {
 }
 
 module "nomad_spark_ports_aws" {
-  # source = "github.com/hashicorp-modules/nomad-spark-ports-aws?ref=f-refactor"
+  # source = "github.com/hashicorp-modules/nomad-spark-ports-aws"
   source = "../../../nomad-spark-ports-aws"
 
   create      = "${var.create}"

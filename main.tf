@@ -2,10 +2,6 @@ terraform {
   required_version = ">= 0.11.6"
 }
 
-provider "aws" {
-  version = "~> 1.12"
-}
-
 resource "aws_security_group" "nomad_spark" {
   count = "${var.create ? 1 : 0}"
 
